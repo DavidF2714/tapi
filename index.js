@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
  
 app.post('/nono/tapi/recargas', async (req, res) => {
   const tkn = req.body.tkn
-  console.log(tkn)
+  const { companyCode } = req.query
     const response = await fetch('https://bxlservices.com/dev/ebp/nonoapp/api/v1/Companies/recharges?Category=TELEFONIA', {
         headers: {
             'Authorization': `Bearer ${tkn}` // Replace YOUR_TOKEN_HERE with the actual token
@@ -24,8 +24,6 @@ app.post('/nono/tapi/recargas', async (req, res) => {
 
     const { content } = data
 
-    console.log("this contenct: ", content)
-
     companyCodes = ["MX-R-00007", "MX-R-00008", "MX-R-00028"]
 
     const findCompany = rc => {
@@ -33,6 +31,10 @@ app.post('/nono/tapi/recargas', async (req, res) => {
     }
 
     filteredRechargeCompanies = content.rechargeCompanies.filter(rc => findCompany(rc))
+
+    if(companyCode) {
+      filteredRechargeCompanies = filteredRechargeCompanies.find(rc => rc.code == companyCode)
+    }
 
     res.json(filteredRechargeCompanies); // Optionally send data back as response
 });
