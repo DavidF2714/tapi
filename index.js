@@ -12,13 +12,13 @@ app.get('/', (req, res) => {
 });
  
 app.post('/nono/tapi/recargas', async (req, res) => {
-  const tkn = req.body.tkn
+  const tkn = req.headers.authorization;
   console.log("received token: ", tkn)
   console.log("data type: ", typeof(tkn))
   const { companyCode } = req.query
     const response = await fetch('https://bxlservices.com/dev/ebp/nonoapp/api/v1/Companies/recharges?Category=TELEFONIA', {
         headers: {
-            'Authorization': `Bearer ${tkn}` // Replace YOUR_TOKEN_HERE with the actual token
+            'Authorization': tkn // Replace YOUR_TOKEN_HERE with the actual token
         }      
     });
     
