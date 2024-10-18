@@ -12,13 +12,11 @@ app.get('/', (req, res) => {
 });
  
 app.post('/nono/tapi/recargas', async (req, res) => {
-  const tkn = req.headers.authorization;
-  console.log("received token: ", tkn)
-  console.log("data type: ", typeof(tkn))
+
   const { companyCode } = req.query
     const response = await fetch('https://bxlservices.com/dev/ebp/nonoapp/api/v1/Companies/recharges?Category=TELEFONIA', {
         headers: {
-            'Authorization': tkn // Replace YOUR_TOKEN_HERE with the actual token
+            'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlGREMwMUE1NTdFNEE4RjdFMTBCRjNGRTA3RkI2RTBGNDI0RTEzNzhSUzI1NiIsIng1dCI6Im45d0JwVmZrcVBmaENfUC1CX3R1RDBKT0UzZyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJodHRwczovL3Nzby5icm94ZWwuY29tL1Rlc3RJZGVudGl0eSIsIm5iZiI6MTcyOTI3NTQ0MCwiaWF0IjoxNzI5Mjc1NDQwLCJleHAiOjE3MjkyNzkwNDAsImF1ZCI6WyJFYXN5QmlsbFBheS1hcGkiLCJodHRwczovL3Nzby5icm94ZWwuY29tL1Rlc3RJZGVudGl0eS9yZXNvdXJjZXMiXSwic2NvcGUiOlsiRWFzeUJpbGxQYXktYXBpIl0sImFtciI6WyJwd2QiXSwiY2xpZW50X2lkIjoiRWFzeUJpbGxQYXlOb05vQXBwRGV2IiwiY3VzdG9tLmJyb3hlbHVzZXJpZCI6IjBkZjgyNmZiZmI1YmI4M2ExODZjMzExYWJiZWZkOTdlIiwiY3VzdG9tLmVtYWlsIjoic2Jlbml0ZXpwZXJ6QGdtYWlsLmNvbSIsInN1YiI6ImI1MjAzMzg5LTdmZGEtNDI2NC04NjYzLWU1M2I3N2RiMGFkYyIsImF1dGhfdGltZSI6MTcyOTI3NTQ0MCwiaWRwIjoibG9jYWwiLCJuYW1lIjoiTm9Ob0FwcCJ9.FqC7SAQB_RZOx5sf3YvoIFmzk4M38jCxQ18IOLg6Yyho5WU91A5QBfbRIURqWHQxffvf7k0qArcrcFkXlg9N13rW1Uu-iIfyhwabE-1u8eRrrtzu4eH5hJ4v0NftTGwmTQc9YdriKNJNzjNpQVtSDyqnSAUHt7YmIeFkJeg29PjeVJZ5Um61ciD-VdTE033oRJSlk88CsI_BYLF68t1Q0F86puLlUiKbZGLmsxtoA5QAGmVCqQ4tZ-iAXqgnr3L9kEZQhusv4QqwaWYDvoDpC5qlyfqJlfnArUSpcDIB2qArIipkhZtP6fUbHzLuASdIMN3KAJpyPG32Hz5udovMNQ'
         }      
     });
     
