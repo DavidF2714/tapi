@@ -10,6 +10,7 @@ app.post('/nono/tapi/recargas', async (req, res) => {
 
     const { companyCode } = req.query
     const token = req.headers['authorization']
+    console.log(token)
     const response = await fetch('https://bxlservices.com/dev/ebp/nonoapp/api/v1/Companies/recharges?Category=TELEFONIA', {
         headers: {
             'Authorization': token
