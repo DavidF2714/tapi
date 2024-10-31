@@ -8,7 +8,7 @@ app.use(express.json())
  
 app.post('/nono/tapi/recargas', async (req, res) => {
 
-    const { companyCode } = req.body
+    const { companyCode } = req.query
     const token = req.headers['authorization']
     console.log(token)
     const response = await fetch('https://bxlservices.com/dev/ebp/nonoapp/api/v1/Companies/recharges?Category=TELEFONIA', {
@@ -21,7 +21,7 @@ app.post('/nono/tapi/recargas', async (req, res) => {
 
     const { content } = data
 
-    companyCodes = ["MX-R-00008", "MX-R-00028"]
+    companyCodes = ["MX-R-00008", "MX-R-00028","MX-R-00007"]
 
     const findCompany = rc => {
       return companyCodes.includes(rc.code)
