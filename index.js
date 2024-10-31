@@ -21,7 +21,7 @@ app.post('/nono/tapi/recargas', async (req, res) => {
 
     const { content } = data
 
-    companyCodes = ["MX-R-00008", "MX-R-00028","MX-R-00007"]
+    companyCodes = ["MX-R-00008", "MX-R-00028","MX-R-00250"]
 
     const findCompany = rc => {
       return companyCodes.includes(rc.code)
